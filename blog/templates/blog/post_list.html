@@ -15,7 +15,7 @@
 				{{ post.published_date }}
 			</div>
 			<h1><a href="/post/{{ post.pk }}/">{{ post.title }}</a></h1>
-			<p>{{ post.text|linebreaks }}</p>
+			<p>{{ post.text|truncatewords:35|linebreaks }}</p>
 		</div>
 	{% endfor %}
 {% endblock content %}
