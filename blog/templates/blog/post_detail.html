@@ -2,6 +2,8 @@
 
 
 {% block content %}
+<script src="//djcode/blog/blog/static/js/like_dislike.js"></script>
+<!-- <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script> -->
 	<div class="post">
 		{% if post.published_date %}
 			<div class="date">
@@ -15,6 +17,12 @@
 		<p>{{ post.text|linebreaks }}</p>
 	</div>
 <hr>
+                <div class="panel-footer">
+                    <span class="pull-right">
+                        <i id="like1" class="glyphicon glyphicon-thumbs-up"></i> <div id="like1-bs3"></div>
+                        <i id="dislike1" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike1-bs3"></div>
+                    </span>
+                </div>
 <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 <div>
 	{% for comment in post.comments.all %}
