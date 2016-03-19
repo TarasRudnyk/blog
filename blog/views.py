@@ -52,6 +52,18 @@ def add_comment_to_post(request, pk):
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
+def post_add_like(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	post.like += 1
+	post.save()
+	return redirect('post_detail', pk=post.pk)
+
+def post_add_dislike(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	post.dislike += 1
+	post.save()
+	return redirect('post_detail', pk=post.pk)
+
 @login_required
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
@@ -64,3 +76,4 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('blog.views.post_detail', pk=post_pk)
+

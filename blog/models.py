@@ -8,6 +8,8 @@ class Post(models.Model):
 	text = models.TextField()
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
+	like = models.IntegerField(default=0)
+	dislike = models.IntegerField(default=0)
 
 
 	def publish(self):
@@ -30,8 +32,7 @@ class Comment(models.Model):
         self.approved_comment = True
         self.save()
 
-    # def approved_comment(self):
-    # 	return self.comment.filter(approved_comment=True)
+
     def approved_comments(self):
     	return self.comments.filter(approved_comment=True)
 
