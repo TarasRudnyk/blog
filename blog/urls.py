@@ -11,4 +11,5 @@ urlpatterns = [
 	url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
 	url(r'^post/(?P<pk>[0-9]+)/like/$', views.post_add_like, name='post_add_like'),
 	url(r'^post/(?P<pk>[0-9]+)/dislike/$', views.post_add_dislike, name='post_add_dislike'),
+	url(r'^paginator/(\d+)/$', views.post_list),
 ]
